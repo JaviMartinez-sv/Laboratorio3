@@ -1,0 +1,23 @@
+version: "3"
+services:
+    core-counter3:
+        image: counter-image
+        ports:
+            - "4000:80"
+            
+    my-ngnix:
+        build: ./DockerFile/
+    
+        ports:
+            - "80:80"
+    
+        
+    sqltestcontainer:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        
+        environment:
+            SA_PASSWORD: "P@ssw0rdSQL"
+            ACCEPT_EULA: "Y"
+            
+        ports:
+            - "1501:1433"
